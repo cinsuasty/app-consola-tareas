@@ -29,7 +29,7 @@ const preguntas = [
             },
             {
                 value: '6',
-                name: `${'6'.green}. Borrar tarea`
+                name: `${'6'.green}. Borrar tarea(s)`
             },
             {
                 value: '0',
@@ -93,22 +93,16 @@ const listadoTareasBorrar = async ( tareas = [] )=> {
             name: `${idx} ${tarea.desc}`
         }
     });
-
-    choices.unshift({
-        value: '0',
-        name: '0.'.green + ' Cancelar'
-    })
-
     const preguntas = [
         {
-            type: 'list',
-            name: 'id',
-            message: '¿Qué desea hacer?',
+            type: 'checkbox',
+            name: 'idsd',
+            message: 'Seleccione las tareas que deseas eliminar',
             choices
         }
     ];
-    const {id} = await inquirer.prompt(preguntas);
-    return id;
+    const {idsd} = await inquirer.prompt(preguntas);
+    return idsd;
 }
 
 const confirmar = async(message) => {

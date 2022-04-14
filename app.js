@@ -42,13 +42,17 @@ const main = async () => {
                 tareas.toggleCompletadas(ids);
             break;
             case '6':
-                const id = await listadoTareasBorrar(tareas.listadoArr);
-                if (id !== '0') {
-                    const ok = await confirmar('¿Esás seguro?')
+                const idsd = await listadoTareasBorrar(tareas.listadoArr);
+                if (idsd.length !== 0) {
+                    const ok = await confirmar('¿Estás seguro?')
                     if (ok) {
-                        tareas.borrarTarea(id);
-                        console.log('Tarea borrada');
+                        tareas.borrarTareas(idsd);
+                        console.log('Tareas borrada'.green);
+                    }else{
+                        console.log('Tareas no borradas'.blue);
                     }   
+                }else{
+                    console.log('No se selecciono ninguna tarea para borrar'.yellow);
                 }
             break;
         }
